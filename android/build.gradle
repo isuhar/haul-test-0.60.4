@@ -1,0 +1,80 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven {
+            url 'https://maven.fabric.io/public'
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.google.gms:google-services:4.2.0'
+        classpath 'io.fabric.tools:gradle:1.28.1'
+        classpath 'com.google.firebase:perf-plugin:1.2.1'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url "$rootDir/../node_modules/react-native/android"
+        }
+        maven {
+            url "https://jitpack.io"
+        }
+        maven {
+            url "$rootDir/../node_modules/jsc-android/dist"
+        }
+    }
+}
+
+subprojects { subproject ->
+    if (subproject.name.contains('react-native-image-picker') ||
+            subproject.name.contains('react-native-vector-icons')) {
+        buildscript {
+            repositories {
+                jcenter()
+                maven { url "https://dl.bintray.com/android/android-tools/"  }
+            }
+        }
+    }
+    afterEvaluate {
+        if ((subproject.plugins.hasPlugin('android') || subproject.plugins.hasPlugin('android-library'))) {
+            android {
+                variantFilter { variant -> 
+                    def names = variant.flavors*.name
+                    if (
+                    names.contains("reactNative51")
+                            || names.contains("reactNative55")
+                            || names.contains("reactNative56")
+                            || names.contains("reactNative57")
+                            || names.contains("reactNative57_5")
+                    ) {
+                        setIgnore(true)
+                    }
+                }
+                compileSdkVersion 29
+                buildToolsVersion "28.0.3"
+            }
+        }
+    }
+    project.configurations.all {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'com.android.support'
+                    && !details.requested.name.contains('multidex') ) {
+                details.useVersion "27.1.0"
+            }
+        }
+    }
+}

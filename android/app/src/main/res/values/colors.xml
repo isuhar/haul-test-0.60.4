@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="baseMegaplan">#08bf32</color>
+    <color name="drawerMegaplan">#3e415f</color>
+    <color name="black">#191919</color>
+    <color name="grey">#bcbbc1</color>
+    <color name="ic_background">#433F6A</color>
+</resources>

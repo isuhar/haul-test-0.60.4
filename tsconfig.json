@@ -1,0 +1,51 @@
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "esnext",
+        "noImplicitAny": true,
+        "jsx": "preserve",
+        "suppressImplicitAnyIndexErrors": false,
+        "sourceMap": true,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "moduleResolution": "node",
+        "rootDir": ".",
+        "baseUrl": ".",
+        "noUnusedLocals": true,
+        "noUnusedParameters": false,
+        "keyofStringsOnly": true,
+        "skipLibCheck": true,
+        "lib": [
+            "dom",
+            "es2017"
+        ],
+        "typeRoots": [
+            "./.typings/types",
+            "./node_modules/@types"
+        ],
+        "types": [
+            "mocha",
+            "material-ui"
+        ],
+        "paths": {
+            "*": [
+                "./.typings/types/*"
+            ],
+            "src/*": [
+                "./src/web/*"
+            ],
+            "mobile/*": [
+                "./src/mobile/*"
+            ]
+        },
+        "importHelpers": true
+    },
+    "files": [
+        "src/mobile/index.ts"
+    ],
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx"
+    ]
+}

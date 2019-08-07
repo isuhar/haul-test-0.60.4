@@ -1,0 +1,6 @@
+{
+    "extends": "./tslint.common.json",
+    "rules": {
+        "no-react-component-usage": false
+    }
+}
