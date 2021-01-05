@@ -83,7 +83,7 @@
     "@types/redux-storage": "4.0.10",
     "@types/sequester": "1.0.0",
     "autoprefixer": "6.7.2",
-    "axios": "0.16.2",
+    "axios": "0.21.1",
     "babel-loader": "8.0.5",
     "babel-plugin-espower": "3.0.1",
     "babel-plugin-lodash": "3.3.4",
